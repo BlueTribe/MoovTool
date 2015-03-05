@@ -7,11 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6C3D1F0E1AA83EDF004EC0B9 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C3D1F0D1AA83EDF004EC0B9 /* CoreBluetooth.framework */; };
 		6C3EAFE21AA68F1D006DE0A7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C3EAFE11AA68F1D006DE0A7 /* AppDelegate.m */; };
 		6C3EAFE41AA68F1D006DE0A7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C3EAFE31AA68F1D006DE0A7 /* main.m */; };
 		6C3EAFE61AA68F1D006DE0A7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6C3EAFE51AA68F1D006DE0A7 /* Images.xcassets */; };
 		6C3EAFE91AA68F1D006DE0A7 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6C3EAFE71AA68F1D006DE0A7 /* MainMenu.xib */; };
 		6C3EAFF51AA68F1D006DE0A7 /* MoovToolTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C3EAFF41AA68F1D006DE0A7 /* MoovToolTests.m */; };
+		6CF3E5AD1AA8076F00A048F6 /* MoovInterface.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6CF3E5AC1AA8076F00A048F6 /* MoovInterface.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -25,6 +27,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6C3D1F0B1AA820E7004EC0B9 /* IOBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOBluetooth.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/IOBluetooth.framework; sourceTree = DEVELOPER_DIR; };
+		6C3D1F0D1AA83EDF004EC0B9 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 		6C3EAFDB1AA68F1D006DE0A7 /* MoovTool.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoovTool.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C3EAFDF1AA68F1D006DE0A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6C3EAFE01AA68F1D006DE0A7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -35,6 +39,8 @@
 		6C3EAFEE1AA68F1D006DE0A7 /* MoovToolTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MoovToolTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C3EAFF31AA68F1D006DE0A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6C3EAFF41AA68F1D006DE0A7 /* MoovToolTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MoovToolTests.m; sourceTree = "<group>"; };
+		6CF3E5AB1AA8076F00A048F6 /* MoovInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoovInterface.h; sourceTree = "<group>"; };
+		6CF3E5AC1AA8076F00A048F6 /* MoovInterface.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MoovInterface.mm; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -42,6 +48,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6C3D1F0E1AA83EDF004EC0B9 /* CoreBluetooth.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -58,6 +65,8 @@
 		6C3EAFD21AA68F1D006DE0A7 = {
 			isa = PBXGroup;
 			children = (
+				6C3D1F0D1AA83EDF004EC0B9 /* CoreBluetooth.framework */,
+				6C3D1F0B1AA820E7004EC0B9 /* IOBluetooth.framework */,
 				6C3EAFDD1AA68F1D006DE0A7 /* MoovTool */,
 				6C3EAFF11AA68F1D006DE0A7 /* MoovToolTests */,
 				6C3EAFDC1AA68F1D006DE0A7 /* Products */,
@@ -81,6 +90,8 @@
 				6C3EAFE51AA68F1D006DE0A7 /* Images.xcassets */,
 				6C3EAFE71AA68F1D006DE0A7 /* MainMenu.xib */,
 				6C3EAFDE1AA68F1D006DE0A7 /* Supporting Files */,
+				6CF3E5AB1AA8076F00A048F6 /* MoovInterface.h */,
+				6CF3E5AC1AA8076F00A048F6 /* MoovInterface.mm */,
 			);
 			path = MoovTool;
 			sourceTree = "<group>";
@@ -211,6 +222,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6C3EAFE41AA68F1D006DE0A7 /* main.m in Sources */,
+				6CF3E5AD1AA8076F00A048F6 /* MoovInterface.mm in Sources */,
 				6C3EAFE21AA68F1D006DE0A7 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -324,22 +336,28 @@
 		6C3EAFF91AA68F1D006DE0A7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = MoovTool/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
 			};
 			name = Debug;
 		};
 		6C3EAFFA1AA68F1D006DE0A7 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = MoovTool/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
 			};
 			name = Release;
 		};
@@ -398,6 +416,7 @@
 				6C3EAFFA1AA68F1D006DE0A7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		6C3EAFFB1AA68F1D006DE0A7 /* Build configuration list for PBXNativeTarget "MoovToolTests" */ = {
 			isa = XCConfigurationList;
@@ -406,6 +425,7 @@
 				6C3EAFFD1AA68F1D006DE0A7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
