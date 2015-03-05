@@ -1,4 +1,6 @@
 #import "MoovInterface.h"
+#import "AppDelegate.h"
+#import <Cocoa/Cocoa.h>
 
 #define MOOV_ADV_SERVICE_UUID @"2B0A857D-3982-4152-B46F-5E7423578524"
 #define MOOV_MEM_SERVICE_UUID @"f000cd50-0451-4000-b000-000000000000"
@@ -16,6 +18,33 @@
     self.peripherals = [[NSMutableArray alloc] init];
     return self;
 }
+
+////////////////////////////////////////////////////////////////////////////////////////////
+// Device Functions
+-(void)connect: (NSInteger)ndx
+{
+    self.moov = self.peripherals[ndx];
+    
+    if(self.moov)
+    {
+        [cbManager connectPeripheral:self.moov options:nil];
+    }
+}
+
+-(void)record
+{
+    // Todo
+}
+
+-(void)read
+{
+    if(self.moov)
+    {
+        [self.moov readValueForCharacteristic:readChar];
+    }
+}
+// Device Functions
+////////////////////////////////////////////////////////////////////////////////////////////
 
 ////////////////////////////////////////////////////////////////////////////////////////////
 // Central Manager Delegate
@@ -40,7 +69,9 @@
     NSLog(@"Discovered %@", peripheral);
     [central stopScan];
     [self.peripherals addObject:peripheral];
-    [cbManager connectPeripheral:peripheral options: nil];
+    
+    // tell the app delegate something changed
+    [((AppDelegate*)[NSApplication sharedApplication].delegate) update];
 }
 
 -(void)centralManager:(CBCentralManager *)central didConnectPeripheral:(CBPeripheral *)peripheral
@@ -48,6 +79,8 @@
     NSLog(@"Connected %@", peripheral);
     peripheral.delegate = self;
     [peripheral discoverServices: @[[CBUUID UUIDWithString: MOOV_MEM_SERVICE_UUID]]];
+    // tell the app delegate something changed
+    [((AppDelegate*)[NSApplication sharedApplication].delegate) update];
 }
 
 -(void)centralManager:(CBCentralManager *)central didFailToConnectPeripheral:(CBPeripheral *)peripheral error:(NSError *)error
@@ -87,13 +120,12 @@
         if([characteristic.UUID isEqualTo:[CBUUID UUIDWithString:MOOV_MEM_READ_CHAR_UUID]])
         {
             readChar = characteristic;
-            [peripheral readValueForCharacteristic:readChar];
+            // tell the app delegate something changed
+            [((AppDelegate*)[NSApplication sharedApplication].delegate) update];
         }
         else if([characteristic.UUID isEqualTo:[CBUUID UUIDWithString:MOOV_ADDR_CHAR_UUID]])
         {
             addrChar = characteristic;
-            [peripheral readValueForCharacteristic:addrChar];
-
         }
     }
 }
@@ -101,6 +133,10 @@
 -(void)peripheral:(CBPeripheral *)peripheral didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error
 {
     NSLog(@"Read Value %@", characteristic.value);
+    self.readValue = characteristic.value;
+    
+    // tell the app delegate something changed
+    [((AppDelegate*)[NSApplication sharedApplication].delegate) update];
 }
 // Peripheral Manager Delegate
 ////////////////////////////////////////////////////////////////////////////////////////////
