@@ -7,9 +7,11 @@
 //
 
 #import <Cocoa/Cocoa.h>
+@class MoovInterface;
 
 @interface AppDelegate : NSObject <NSApplicationDelegate>
-
+{
+}
 
 @end
 

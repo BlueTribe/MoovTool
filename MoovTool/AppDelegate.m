@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "MoovInterface.h"
 
 @interface AppDelegate ()
 
@@ -14,13 +15,15 @@
 @end
 
 @implementation AppDelegate
+static MoovInterface * mi;
 
-- (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
-    // Insert code here to initialize your application
+- (void)applicationDidFinishLaunching:(NSNotification *)aNotification
+{
+    mi = [[MoovInterface alloc] init];
 }
 
-- (void)applicationWillTerminate:(NSNotification *)aNotification {
-    // Insert code here to tear down your application
+- (void)applicationWillTerminate:(NSNotification *)aNotification
+{
 }
 
 @end
